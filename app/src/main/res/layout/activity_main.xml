@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--滑动菜单，使一部分菜单选项隐藏起来-->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/deawer_layou"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--CoordinatorLayout是加强帮的FrameLayout-->
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--可解决覆盖的滚动-->
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                />
+            <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+            <!--使用深色主题与ActionBar区分开-->
+            <!--app:popipTheme="@style/ThemeOverlay.AppCompat.Light"-->
+            <!--单独制定菜单为浅色主题-->
+        </android.support.design.widget.AppBarLayout>
+
+        <!--下拉刷新功能-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <!--悬浮按钮-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/dui"
+            />
+        <!--end 更语言判断在左还是右-->
+    </android.support.design.widget.CoordinatorLayout>
+
+    <!--滑动菜单（隐藏）-->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header"
+        />
+    <!--android:layout_gravity="start"  根据语言判断滑动菜单在那边，此时在左边-->
+
+</android.support.v4.widget.DrawerLayout>
